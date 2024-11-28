@@ -1,0 +1,27 @@
+<header class="app-header">
+    <div class="toolbar">
+      <button class="back-button" (click)="goBack()" aria-label="Go Back">
+        <i class="fas fa-arrow-left"></i> 
+      </button>
+      <h1 class="title" style="display: inline; margin-left: 10px;">Pay Fees Online</h1> 
+    </div>
+  </header>
+  
+  <main class="main-content">
+    <h2>Pay via PhonePe</h2>
+    <p>Please scan the QR code below to pay the fees or contact the admin for assistance.</p>
+  
+    <div class="contact-info">
+      <h3>Lakshminarayan:</h3>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+  
+    <div class="qr-code" style="text-align: center; margin-top: 20px;">
+      <img src="image/WhatsApp Image 2024-10-04 at 19.11.58.jpeg" alt="PhonePe QR Code" style="width: 350px; height: 200px;">
+    </div>
+  
+    <button class="phonepe-button" (click)="openPhonePeApp()" style="margin-top: 20px;">
+      Open PhonePe
+    </button>
+  </main>
+  

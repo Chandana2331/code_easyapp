@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button routerLink="/admin-dashboard" aria-label="Back to Admin Dashboard" style="color: black;">
+    <mat-icon style="color: white;">arrow_back</mat-icon>
+  </button>
+  <span>Marks Management</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="marksForm" (ngSubmit)="submitMarks()">
+    <div formArrayName="students">
+      <div *ngFor="let student of students.controls; let i = index" [formGroupName]="i" class="student-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter student's name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Class</mat-label>
+          <input matInput formControlName="class" placeholder="Enter class" required>
+        </mat-form-field>
+
+        <div formArrayName="subjects">
+          <div *ngFor="let subject of getSubjects(i).controls; let j = index" [formGroupName]="j" class="subject-form">
+            <mat-form-field appearance="fill">
+              <mat-label>Subject</mat-label>
+              <mat-select formControlName="subject" placeholder="Select subject">
+                <mat-option *ngFor="let subj of ['Kannada', 'English', 'Hindi', 'Maths', 'Science', 'Social']" [value]="subj">
+                  {{ subj }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Marks</mat-label>
+              <input matInput formControlName="marks" type="number" placeholder="Enter marks" required>
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" type="button" (click)="removeSubject(i, j)" *ngIf="getSubjects(i).length > 1">
+              <mat-icon>remove_circle</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <button mat-button color="primary" type="button" (click)="addSubject(i)">Add Subject</button>
+        <button mat-icon-button color="warn" type="button" (click)="removeStudent(i)" *ngIf="students.length > 1">
+          <mat-icon>remove_circle</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" type="button" (click)="addStudent()">Add Another Student</button>
+    <button mat-raised-button color="accent" type="submit" [disabled]="!marksForm.valid">Submit Marks</button>
+  </form>
+
+  
+  <div *ngIf="storedMarks.length > 0" class="stored-marks">
+    <h2>Stored Marks</h2>
+    <div *ngFor="let record of storedMarks; let i = index" class="student-record">
+      <p><strong>Name:</strong> {{ record.name }}</p>
+      <p><strong>Class:</strong> {{ record.class }}</p>
+      <div *ngFor="let subject of record.subjects">
+        <p><strong>{{ subject.subject }}:</strong> {{ subject.marks }} marks</p>
+      </div>
+      <button mat-button color="primary" (click)="editStudent(record)">Edit</button>
+      <button mat-button color="warn" (click)="deleteStudent(i)">Delete</button>
+    </div>
+  </div>
+</div>

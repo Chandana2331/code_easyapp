@@ -1,0 +1,81 @@
+<mat-toolbar color="warn">
+    <button mat-icon-button routerLink="/login" aria-label="Back" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="admin-login-title">Admin Login</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+  
+  <div class="container">
+    <div class="logo-container">
+        <img src="/image/WhatsApp_Image_2024-10-07_at_10.39.35_AM-removebg-preview.png" alt="Logo" style="max-width: 60px;" />
+        <img src="/image/WhatsApp_Image_2024-10-03_at_11.56.22_AM__1_-removebg-preview.png" alt="Logo" style="max-width: 150px;" />
+    </div>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="outline" class="full-width" [class.invalid]="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+            <mat-label>Admin Name</mat-label>
+            <input matInput formControlName="username" required />
+            <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Admin Name is required.</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width" [class.invalid]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required />
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required.</mat-error>
+            <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Password must be at least 8 characters.</mat-error>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" class="login-button" expand="block" type="submit" [disabled]="loginForm.invalid" style="margin-top: 20px;">Login</button>
+    </form>
+  </div>
+  
+  
+  
+  
+  <style>
+    .back-button {
+        color: white;
+    }
+    
+    .admin-login-title {
+        color: white;
+        margin-left: 10px;
+    }
+    
+    .login-button {
+        background-color: black; 
+        color: white;
+    }
+  
+    .container {
+        text-align: center;
+        padding: 20px;
+    }
+  
+    .full-width {
+        width: 100%;
+    }
+  
+    .logo-container {
+        margin-bottom: 20px;
+    }
+  
+    .outlined-input {
+        border-radius: 5px;
+    }
+  
+    .invalid {
+        --border-color: red !important;
+    }
+  
+    .privacy-policy-container {
+      padding: 16px;
+    }
+  
+    p {
+      margin-bottom: 16px;
+      color: #666;
+    }
+  </style>
+  

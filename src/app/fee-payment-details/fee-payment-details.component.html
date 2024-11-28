@@ -1,0 +1,17 @@
+
+<mat-toolbar color="warn" class="custom-toolbar">
+    <button mat-icon-button routerLink="/tab1" aria-label="Back to tab1" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Fee Payment Details</span>
+  </mat-toolbar>
+  
+
+  <div class="fee-payment-list" style="padding: 16px;">
+    <div *ngFor="let payment of feePayments" style="margin-bottom: 20px;">
+      <div><strong>Amount:</strong> {{ payment.amount }}</div>
+      <div><strong>Date:</strong> {{ payment.date }}</div>
+      <div><strong>Transaction ID:</strong> {{ payment.transactionId }}</div>
+    </div>
+  </div>
+  

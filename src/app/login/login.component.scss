@@ -1,0 +1,54 @@
+.large-white-button {
+  color: white !important;
+  font-size: 1.2rem;
+ 
+  padding: 8px 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-small {
+  max-width: 60px;
+  margin-right: 10px;
+}
+
+.logo-large {
+  max-width: 150px;
+}
+
+.full-width {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.center-text {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.invalid mat-form-field {
+  border-color: black;
+}

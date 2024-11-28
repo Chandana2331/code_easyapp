@@ -1,0 +1,20 @@
+<header class="app-header">
+  <button (click)="goBack()" class="back-button">
+    <i class="fas fa-arrow-left"></i>
+  </button>
+  <h3>Reminder Notification</h3>
+</header>
+
+<main class="main-content">
+  <ng-container *ngIf="notifications.length > 0; else noNotifications">
+    <div *ngFor="let notification of notifications" class="notification-card">
+      <h1>{{ notification.message }}</h1>
+      <p>Date: {{ notification.date }}</p>
+      <p>Status: {{ notification.isPaid ? 'Paid' : 'Pending' }}</p>
+    </div>
+  </ng-container>
+
+  <ng-template #noNotifications>
+    <p class="no-notification">No pending reminders!</p>
+  </ng-template>
+</main>

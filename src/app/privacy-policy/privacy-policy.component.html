@@ -1,0 +1,50 @@
+<mat-toolbar color="warn" class="toolbar">
+   
+    
+    <span class="toolbar-title">Privacy Policy</span>
+  </mat-toolbar>
+  
+  <div class="privacy-policy-container">
+    <p>
+      Welcome to our application! By using our services, you agree to the collection and use of your information as described in this Privacy Policy.
+    </p>
+    <p>
+      This application is designed to manage tuition fees and streamline the process of fee payments. Please read through and agree to the terms and conditions below.
+    </p>
+  
+    <form [formGroup]="termsForm" (ngSubmit)="onSubmit()">
+      <mat-checkbox formControlName="agreeToTerms">
+        I agree to the terms and conditions.
+      </mat-checkbox>
+  
+      <button mat-raised-button color="primary" style="color: black;" type="submit" [disabled]="termsForm.invalid">
+        Agree and Continue
+      </button>
+    </form>
+  </div>
+  
+  <style>
+    .toolbar {
+      display: flex;
+      align-items: left;
+      
+    }
+  
+    .toolbar-title {
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      flex: 1;
+      text-align: center;
+    }
+  
+    .privacy-policy-container {
+      padding: 16px;
+    }
+  
+    p {
+      margin-bottom: 16px;
+      color: #666;
+    }
+  </style>
+  

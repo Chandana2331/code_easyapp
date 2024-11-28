@@ -1,0 +1,50 @@
+
+<mat-toolbar color="warn">
+    <button mat-icon-button routerLink="/admin-dashboard" aria-label="Back to Home">
+        <mat-icon style="color: white;">arrow_back</mat-icon>
+    </button>
+    <span>Manage Enquiries</span>
+</mat-toolbar>
+
+<div class="container" style="padding: 16px;">
+    <form [formGroup]="enquiryForm" (ngSubmit)="submitEnquiry()">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="enquiryForm.get('name')?.hasError('required')">Name is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" required></textarea>
+            <mat-error *ngIf="enquiryForm.get('description')?.hasError('required')">Description is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Outcome</mat-label>
+            <input matInput formControlName="outcome" required>
+            <mat-error *ngIf="enquiryForm.get('outcome')?.hasError('required')">Outcome is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of Enquiry</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="enquiryForm.get('date')?.hasError('required')">Date is required.</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!enquiryForm.valid">Add Enquiry</button>
+    </form>
+
+    <mat-list>
+        <h3 mat-subheader>Existing Enquiries</h3>
+
+        <mat-list-item *ngFor="let enquiry of enquiries">
+            <h4 mat-line>{{ enquiry.name }}</h4>
+            <p mat-line><strong>Description:</strong> {{ enquiry.description }}</p>
+            <p mat-line><strong>Outcome:</strong> {{ enquiry.outcome }}</p>
+            <p mat-line><strong>Date of Enquiry:</strong> {{ enquiry.date | date }}</p>
+        </mat-list-item>
+    </mat-list>
+</div>

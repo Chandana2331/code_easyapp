@@ -1,0 +1,43 @@
+<mat-toolbar color="warn">
+    <button mat-icon-button (click)="goBack()" aria-label="Go back">
+      <mat-icon style="color: white;">arrow_back</mat-icon>
+    </button>
+    <span style="color: white; margin-left: 8px;">Student Fee Details</span>
+  </mat-toolbar>
+  
+  <div class="container">
+    <h2>All Paid Fee Records</h2>
+    <mat-table [dataSource]="feeData" class="mat-elevation-z8">
+  
+      
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let fee"> {{fee.name}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="class">
+        <mat-header-cell *matHeaderCellDef> Class </mat-header-cell>
+        <mat-cell *matCellDef="let fee"> {{fee.class}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="amountPaid">
+        <mat-header-cell *matHeaderCellDef> Amount Paid </mat-header-cell>
+        <mat-cell *matCellDef="let fee"> ₹{{fee.amountPaid}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="registrationFees">
+        <mat-header-cell *matHeaderCellDef> Registration Fees </mat-header-cell>
+        <mat-cell *matCellDef="let fee"> ₹{{fee.registrationFees}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="datePaid">
+        <mat-header-cell *matHeaderCellDef> Date Paid </mat-header-cell>
+        <mat-cell *matCellDef="let fee"> {{fee.datePaid | date}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+    </mat-table>
+  </div>
+  

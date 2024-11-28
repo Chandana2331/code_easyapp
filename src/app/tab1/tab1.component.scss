@@ -1,0 +1,119 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px; 
+    margin-left: 10px;
+    padding: 5px; 
+
+    
+    &:hover {
+      color: #007bff; 
+    }
+  }
+  
+  .icon-button i {
+    font-size: 18px; 
+  }
+}
+
+
+  
+
+  .main-banner {
+    height: 200px;
+    width: 94%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px; 
+  }
+
+  .card-container {
+    margin-top: 16px; 
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .card {
+    background: #f4f6f8;
+    padding: 16px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s; 
+
+    &:hover {
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    }
+
+    h3 {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  .user-profile {
+    padding: 16px;
+    border: 1px solid #dcdcdc;
+    margin-top: 16px;
+    border-radius: 5px; 
+    background-color: #fff; 
+  }
+
+
+.app-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+  color: red;
+  position: relative; 
+  bottom: 0; 
+}
+
+.menu {
+  position: absolute;
+  top: 50px; 
+  right: 10px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+  border-radius: 2px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin: 10px 0;
+      cursor: pointer;
+
+      &:hover {
+        color: #007bff; 
+      }
+    }
+  }
+}

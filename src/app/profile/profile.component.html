@@ -1,0 +1,37 @@
+<header class="app-header">
+  <div class="toolbar">
+    <button aria-label="Back" class="back-button" (click)="router.navigate(['/tab1'])">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1 class="toolbar-title">Student Profile</h1>
+  </div>
+</header>
+
+<main class="page-profile">
+  <div class="profile-header">
+    <img src="image/istockphoto-1300845620-612x612.jpg" alt="Profile Logo" class="profile-logo">
+    <div class="name-card">
+      <h2>{{ studentName }}</h2>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <p><strong>Class:</strong> {{ studentClass }}</p>
+  </div>
+
+  <div class="detail-card">
+    <p><strong>Phone:</strong> {{ studentPhone }}</p>
+  </div>
+
+  <div class="detail-card">
+    <p><strong>Subjects Joined:</strong> {{ subjects }}</p>
+  </div>
+
+  <div class="detail-card">
+    <p><strong>Total Fees:</strong> {{ Totalfees }}</p>
+  </div>
+
+  <div class="detail-card">
+    <p class="red-title"><strong>Date of Joining:</strong> {{ date }}</p>
+  </div>
+</main>

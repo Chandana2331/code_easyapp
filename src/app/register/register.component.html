@@ -1,0 +1,109 @@
+<div class="register-container">
+  <mat-toolbar color="warn">
+    <button mat-icon-button (click)="goBack()" style="color: white;">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Register</span>
+  </mat-toolbar>
+  <br />
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div>
+      <label>Username</label>
+      <input formControlName="username" type="text" />
+    </div>
+    <div>
+      <label>Student Name</label>
+      <input formControlName="studentName" type="text" />
+    </div>
+    <div>
+      <label>Class</label>
+      <select formControlName="class" (change)="onClassChange()">
+        <option value="">Select Class</option>
+        <option *ngFor="let i of classOptions" [value]="i">{{ i }}</option>
+      </select>
+    </div>
+    <div>
+      <label>Gender</label>
+      <select formControlName="gender">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div>
+      <label>Medium</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose Medium</mat-label>
+        <mat-select formControlName="medium" (selectionChange)="onMediumChange()">
+          <mat-option value="state-syllabus">State Syllabus</mat-option>
+          <mat-option value="cbse">CBSE</mat-option>
+          <mat-option value="icse">ICSE</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <label>School Name</label>
+      <input formControlName="schoolName" type="text" />
+    </div>
+    <div *ngIf="isClassValidForSubjects()">
+      <label>Subjects</label>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" formControlName="maths" /> Maths
+        </label>
+        <label>
+          <input type="checkbox" formControlName="science" /> Science
+        </label>
+        <label *ngIf="!isHighSchool">
+          <input type="checkbox" formControlName="social" /> Social
+        </label>
+        <label *ngIf="!isHighSchool">
+          <input type="checkbox" formControlName="kannada" /> Kannada
+        </label>
+        <label *ngIf="!isHighSchool">
+          <input type="checkbox" formControlName="sanskrit" /> Sanskrit
+        </label>
+        <label *ngIf="!isHighSchool">
+          <input type="checkbox" formControlName="hindi" /> Hindi
+        </label>
+        <label>
+          <input type="checkbox" formControlName="allSubjects" /> All Subjects
+        </label>
+      </div>
+    </div>
+    <div>
+      <label>Total Fees</label>
+      <input [value]="registerForm.get('fees')?.value ?? 0" type="text" readonly />
+    </div>
+    <div>
+      <label>Payment Mode</label>
+      <select formControlName="paymentMode">
+        <option value="">Select Payment Mode</option>
+        <option value="monthly">Monthly</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+    </div>
+    <div>
+      <label>Date of Joining</label>
+      <input formControlName="dateOfJoining" type="date" />
+    </div>
+    <div>
+      <label>Phone</label>
+      <input formControlName="phone" type="text" />
+    </div>
+    <div>
+      <label>Password</label>
+      <input formControlName="password" type="password" />
+    </div>
+    <button type="submit">Register</button>
+  </form>
+
+  <button *ngIf="registrationSuccess && !paymentSuccess" (click)="initiatePayment()" class="pay-registration-fee">
+    Pay Registration Fee via PhonePe
+  </button>
+  <button *ngIf="paymentSuccess" (click)="completePayment()" class="pay-registration-fee">
+    Complete Registration
+  </button>
+</div>

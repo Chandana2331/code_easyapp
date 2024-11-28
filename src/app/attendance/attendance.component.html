@@ -1,0 +1,20 @@
+<mat-toolbar color="warn">
+    <button mat-icon-button routerLink="/tab1" aria-label="Back to Tab 1" class="white-icon-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Attendance</span>
+  </mat-toolbar>
+  
+  <div class="container" style="padding: 16px;">
+    <h2>Attendance for Student: {{ studentId }}</h2>
+  
+    <mat-list *ngIf="attendance">
+      <mat-list-item *ngFor="let item of attendance">
+        <h3 matLine>Date: {{ item.date }}</h3>
+        <p matLine>Status: {{ item.status }}</p>
+      </mat-list-item>
+    </mat-list>
+  
+    <p *ngIf="!attendance">No attendance data found for this student.</p>
+  </div>
+  

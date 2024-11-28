@@ -1,0 +1,111 @@
+<mat-toolbar color="warn" class="toolbar">
+    <button mat-icon-button routerLink="/admin-dashboard" aria-label="Back to Admin Dashboard">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+  <span class="title">Manage Staff Details</span><br>
+</mat-toolbar>
+
+<div class="container">
+    <form [formGroup]="staffForm" (ngSubmit)="submitStaff()">
+        <div formArrayName="staffMembers">
+            <div *ngFor="let staff of staffMembers.controls; let i = index" [formGroupName]="i">
+                <div class="staff-member">
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" placeholder="Name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input matInput formControlName="phone" placeholder="Phone">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="address" placeholder="Address">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Designation</mat-label>
+                        <input matInput formControlName="designation" placeholder="Designation">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Date of Joining</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dateOfJoining" placeholder="Date of Joining" type="text">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <button mat-button color="warn" type="button" (click)="removeStaff(i)">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <button mat-raised-button color="warn" type="button" (click)="addStaff()">Add New Staff</button>
+        <button mat-raised-button color="warn" type="submit">Submit</button>
+    </form>
+
+    <div *ngIf="submittedStaff.length > 0" class="submitted-staff-container">
+        <h3>Submitted Staff Information</h3>
+        <div *ngFor="let staff of submittedStaff; let i = index">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{ staff.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ staff.designation }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Phone:</strong> {{ staff.phone }}</p>
+                    <p><strong>Address:</strong> {{ staff.address }}</p>
+                    <p><strong>Date of Joining:</strong> {{ staff.dateOfJoining | date: 'dd/MM/yyyy' }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="primary" (click)="editStaff(i)">Edit</button>
+                    <button mat-button color="warn" (click)="deleteStaff(i)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<style>
+    .toolbar {
+        display: flex;
+        align-items: center;
+    }
+
+    .toolbar button {
+        margin-right: 8px;
+    }
+
+    .title {
+        font-size: 20px;
+        color: white;
+    }
+
+    .container {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .staff-member {
+        margin-bottom: 16px;
+    }
+
+    mat-form-field {
+        display: block;
+    }
+
+    button {
+        margin-top: 16px;
+    }
+
+    .submitted-staff-container {
+        margin-top: 32px;
+    }
+
+    mat-card {
+        margin-bottom: 16px;
+    }
+
+    /* Icon color adjustment */
+    mat-icon {
+        color: white;
+    }
+</style>

@@ -1,0 +1,30 @@
+.container {
+    padding: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  mat-card {
+    margin-top: 16px;
+  }
+  
+  mat-radio-button {
+    margin-right: 16px;
+  }
+  .container {
+    padding: 16px;
+  }
+  
+  .present-date .mat-calendar-body-cell-content {
+    background-color: lightgreen !important;
+    border-radius: 50%;
+  }
+  
+  .absent-date .mat-calendar-body-cell-content {
+    background-color: salmon !important;
+    border-radius: 50%;
+  }
+    

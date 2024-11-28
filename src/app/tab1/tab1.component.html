@@ -1,0 +1,60 @@
+<header class="app-header">
+  <div class="logo-container">
+    <img src="image/WhatsApp_Image_2024-10-07_at_10.39.35_AM-removebg-preview.png" alt="Logo" style="height: 50px;">
+    <img src="image/WhatsApp_Image_2024-10-03_at_11.56.22_AM__1_-removebg-preview.png" alt="Logo" style="height: 85px;">
+  </div>
+  <div class="header-buttons">
+    <button (click)="openNotifications()" aria-label="Open Notifications" class="icon-button">
+      <i class="fas fa-bell"></i>
+    </button>
+    <button (click)="openMenu()" aria-label="Open Menu" class="icon-button">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main class="main-content">
+  <img src="image/WhatsAppVideo2024-10-14at12.07.09PM-ezgif.com-video-to-gif-converter.gif" 
+       alt="Main Banner" class="main-banner" style="width: 99%; max-width: 800px; height: 220px;"><br>
+
+  <div class="card-container">
+    <div class="cards-container">
+      <div class="card" routerLink="/fee-details">
+        <h3><i class="fas fa-cash-register"></i> Fee Details</h3>
+      </div>
+
+      <div class="card" routerLink="/reminder-notification">
+        <h3><i class="fas fa-bell"></i> View Reminder Notifications</h3>
+      </div>
+
+      <div class="card" routerLink="/collect-fees">
+        <h3><i class="fas fa-rupee-sign"></i> Pay Fees Online</h3>
+      </div>
+
+      <div class="card" [routerLink]="['/invoice', invoiceId]">
+        <h3><i class="fas fa-file-alt"></i> Generate Invoices and Receipts</h3>
+      </div>
+    </div>
+  </div><br><br>
+
+  <img src="image/student.jpeg" alt="Footer Logo" class="footer-logo" style="width: 100%; max-width: 700px; height: auto;">
+</main>
+
+<footer class="app-footer">
+  <p><strong>STEM EDUCATION AND TRAINING CENTER.</strong></p>
+</footer>
+
+
+<div class="menu" *ngIf="isMenuOpen">
+  <mat-toolbar color="warn" class="menu-toolbar">
+    <h2>Menu</h2>
+  </mat-toolbar>
+  <ul>
+    <li routerLink="/time-table">Time Table</li>
+    <li routerLink="/fee-payment-details">Fee Payment Details</li>
+    <li [routerLink]="['/attendance', studentId]">Attendance</li>
+    <li [routerLink]="['/marks', studentId]">Marks</li>
+    <li (click)="logout()">Logout</li> 
+    <li routerLink="/profile">View Profile</li>
+  </ul>
+</div>

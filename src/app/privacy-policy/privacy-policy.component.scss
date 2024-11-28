@@ -1,0 +1,26 @@
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  mat-checkbox {
+    margin-top: 20px;
+    color: black;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 8px;
+  }
+.toolbar-title{
+  align-items: center;
+  text-align: center;
+  align-content: center;
+}  

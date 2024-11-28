@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+
+mat-toolbar.mat-warn {
+  background-color: #c60c0c;
+  color: rgb(249, 246, 248); 
+}
+
+
+.custom-red-button {
+  background-color: #080808 !important; 
+  color: white !important; 
+}

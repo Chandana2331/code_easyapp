@@ -1,0 +1,103 @@
+<mat-toolbar color="warn">
+  <span>Login</span>
+  <span class="spacer"></span>
+  <button mat-button color="accent" routerLink="/admin-login" class="large-white-button">Admin Login</button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="logo-container">
+    <img src="/image/WhatsApp_Image_2024-10-07_at_10.39.35_AM-removebg-preview.png" alt="Logo" class="logo-small" />
+    <img src="/image/WhatsApp_Image_2024-10-03_at_11.56.22_AM__1_-removebg-preview.png" alt="Logo" class="logo-large" />
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field appearance="outline" class="full-width" [class.invalid]="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" required />
+      <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Username is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width" [class.invalid]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" required />
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required.</mat-error>
+      <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Password must be at least 6 characters.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width" [class.invalid]="loginForm.controls['phone'].invalid && loginForm.controls['phone'].touched">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="tel" formControlName="phone" required />
+      <mat-error *ngIf="loginForm.controls['phone'].hasError('required')">Phone number is required.</mat-error>
+      <mat-error *ngIf="loginForm.controls['phone'].hasError('pattern')">Enter a valid phone number (10 digits).</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button class="full-width custom-red-button" type="submit" [disabled]="loginForm.invalid">Login</button>
+    
+    <p class="center-text">
+      New user? <a routerLink="/register" class="blue-link">Register here</a>
+    </p>
+    <p class="center-text">
+      <a (click)="forgotPassword()" class="bold-link" style="color: blue;">Forgot Password?</a>
+    </p>
+    
+  </form>
+</div>
+
+<mat-toolbar color="light" class="footer">
+  <span>By logging in, you agree to our <a routerLink="/privacy-policy" style="color: blue;">Privacy Policy</a></span>
+</mat-toolbar>
+
+<style>
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .logo-small {
+    width: 100px;
+    margin-right: 20px;
+  }
+
+  .logo-large {
+    width: 150px;
+  }
+
+  .container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .center-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .blue-link {
+    color: blue;
+    text-decoration: none;
+  }
+
+  .blue-link:hover {
+    text-decoration: underline;
+  }
+
+  .custom-red-button {
+    background-color: red;
+    color: white;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+</style>

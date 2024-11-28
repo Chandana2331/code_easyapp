@@ -1,0 +1,95 @@
+<mat-toolbar color="warn">
+  <button mat-icon-button routerLink="/admin-dashboard" aria-label="Back to Admin Dashboard">
+    <mat-icon style="color: white;">arrow_back</mat-icon>
+  </button>
+  <span>Staff Attendance Record</span>
+</mat-toolbar>
+
+<div class="container">
+ 
+  <mat-card>
+    <mat-card-header>
+     
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="staffAttendanceForm" (ngSubmit)="addAttendanceRecord()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Staff Name</mat-label>
+          <input matInput formControlName="staffName" placeholder="Enter staff name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Designation</mat-label>
+          <input matInput formControlName="designation" placeholder="Enter designation" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Attendance Status</mat-label>
+          <select matNativeControl formControlName="attendanceStatus" (change)="updateDateColor()">
+            <option value="">Select Status</option>
+            <option value="present">Present</option>
+            <option value="absent">Absent</option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Attendance Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="attendanceDate"
+            [ngStyle]="{'background-color': dateColor}"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Add Attendance</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  
+  <div *ngFor="let staff of groupedAttendanceRecords; let i = index">
+    <mat-card style="margin-top: 20px;">
+      <mat-card-header>
+        <mat-card-title>{{ staff.staffName }} - {{ staff.designation }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="staff.presentDates.length > 0">
+          <h3>Present Dates</h3>
+          <ul>
+            <li *ngFor="let date of staff.presentDates">{{ date | date: 'MMM d, y' }}</li>
+          </ul>
+        </div>
+        <div *ngIf="staff.absentDates.length > 0">
+          <h3>Absent Dates</h3>
+          <ul>
+            <li *ngFor="let date of staff.absentDates">{{ date | date: 'MMM d, y' }}</li>
+          </ul>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="editAttendanceRecord(i)">Edit</button>
+        <button mat-button color="warn" (click)="deleteAttendanceRecord(i)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<style>
+  .container {
+    padding: 16px;
+  }
+  mat-toolbar {
+    background-color: red;
+    color: white;
+  }
+  mat-card {
+    margin-top: 20px;
+  }
+  .full-width {
+    width: 100%;
+  }
+</style>
