@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">code-easyapp</string>
+    <string name="title_activity_main">code-easyapp</string>
+    <string name="package_name">codeeasy.example.com</string>
+    <string name="custom_url_scheme">codeeasy.example.com</string>
+</resources>
